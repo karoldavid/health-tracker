@@ -4,7 +4,7 @@ app.ListView = Backbone.View.extend({
     el: $('#search'),
     events: {
         'keyup input': 'getResults',
-        'click i': 'deleteQuery',
+        'click i': 'resetSearch'
     },
     initialize: function() {
         _.bindAll(this, 'render', 'getResults');
@@ -12,14 +12,14 @@ app.ListView = Backbone.View.extend({
         this.render();
     },
     render: function() {
-        var self = this;
+        c//onsole.log(this.collection);
     },
     renderList: function() {
         $("#list").empty();
         var that = this,
             results = that.collection;
 
-        results.forEach(function(item){
+        results.models.forEach(function(item){
             that.renderListItem(item);
         });
 
@@ -33,24 +33,36 @@ app.ListView = Backbone.View.extend({
     },
     getResults: function( e ) {
         e.preventDefault();
-        var query = e.target.value,
+        var query = $('#search input').val(),
+            //query = e.target.value,
             that = this,
             newUrl = "https://api.nutritionix.com/v1_1/search/" + query +"?results=0:5&appId=45d2f648&appKey=554a56cde5749526f1c5bb56190fda39";
+            this.collection.query = query;
             this.collection.url = newUrl;
-        this.collection.fetch({
-            data: $.param({ phrase: query, cal_min: 0, cal_max: 50000, limit: 10}),
-            success: function() {
-                // console.log(that.collection.toJSON());
-                that.renderList();
-            },
-            error: function() {
-                console.log('Failed to fetch!');
-            }
-        });
+        if (query != '') {
+            this.collection.fetch({
+                data: $.param({ phrase: query, cal_min: 0, cal_max: 50000, limit: 10, results: {0:5}}),
+                success: function() {
+                    that.renderList();
+                },
+                error: function() {
+                    console.log('Failed to fetch!');
+                }
+            });
+        } else {
+            that.collection.reset();
+            that.renderList();
+        }
     },
-    deleteQuery: function( e ) {
+    resetSearch: function( e ) {
         e.preventDefault();
         $('input').val('');
-        $("#list").empty();
+        this.collection.reset();
+        this.renderList();
     }
 });
+
+
+// @TODO: sync search results with search input
+// @TODO: destroy model
+// @TODO: render search results list on change

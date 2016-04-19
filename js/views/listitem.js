@@ -9,5 +9,17 @@ app.ListitemView = Backbone.View.extend({
     render: function() {
         this.$el.html( this.template( this.model.attributes ) );
         return this;
+    },
+    events: {
+        'click .delete': 'deleteItem'
+    },
+    deleteItem: function() {
+        //Delete model
+        this.model.destroy();
+
+        //Delete view
+        this.remove();
+
+        console.log(app.ListView.collection);
     }
 });
