@@ -46,7 +46,7 @@
 	  			<!-- list with search results -->
 	  		  	<div class="col s4">
 	  		  		<h4>Search Results</h4>
-	  				<ul id="list" class="collection"></ul>
+	  				<ul id="list" class="collapsible" data-collapsible="expandable"></ul>
 	  			</div>
 
 	  			<div class="col s4"></div>
@@ -58,12 +58,13 @@
 
 	<!-- template for each item in search results -->
 	<script id="listitemTemplate" type="text/template">
-		<p>Name: <%= fields.item_name %></p>
-		<p>Brand: <%= fields.brand_name %></p>
-	   	<p>ID: <%= _id %></p>
-	   	<button class="btn waves-effect waves-light delete" type="delete" name="action">Delete
-			<i class="material-icons right">delete</i>
-		</button>
+		<div class="collapsible-header"><%= fields.item_name %></div>
+		<div class="collapsible-body">
+			<p>Calories: <%= fields.nf_calories %></p>
+			<p>Protein: <%= fields.nf_protein %></p>
+			<p>Sugars: <%= fields.nf_sugars %></p>
+
+		</div>
 	</script>
 
 	<!-- JavaScript Includes -->

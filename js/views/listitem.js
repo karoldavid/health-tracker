@@ -3,7 +3,7 @@ var app = app || {};
 
 app.ListitemView = Backbone.View.extend({
     tagName: 'li',
-    className: 'collection-item',
+    //className: 'collection-item',
     template: _.template( $( '#listitemTemplate' ).html() ),
 
     render: function() {

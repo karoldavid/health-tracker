@@ -29,6 +29,8 @@ app.ListView = Backbone.View.extend({
             model: item
         });
 
+        console.log(item);
+
         $('#list').append( listItemView.render().el )
     },
     getResults: function( e ) {
@@ -41,7 +43,7 @@ app.ListView = Backbone.View.extend({
             this.collection.url = newUrl;
         if (query != '') {
             this.collection.fetch({
-                data: $.param({ phrase: query, cal_min: 0, cal_max: 50000, limit: 10, results: {0:5}}),
+                data: $.param({ phrase: query, cal_min: 0, cal_max: 50000, limit: 10, results: {0:5}, fields: '*'}),
                 success: function() {
                     that.renderList();
                 },
