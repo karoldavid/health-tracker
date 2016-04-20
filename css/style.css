@@ -9,3 +9,7 @@ body {
 img {
 	width: 100px;
 }
+
+.collapsible-body p {
+	padding: 0.5rem;
+}
