@@ -12,7 +12,7 @@ app.ListView = Backbone.View.extend({
         this.render();
     },
     render: function() {
-        c//onsole.log(this.collection);
+        //console.log(this.collection);
     },
     renderList: function() {
         $("#list").empty();
@@ -63,6 +63,5 @@ app.ListView = Backbone.View.extend({
 });
 
 
-// @TODO: sync search results with search input
-// @TODO: destroy model
-// @TODO: render search results list on change
+// @TODO: integrate custom search properties
+// @TODO: save selected data to database
