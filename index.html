@@ -14,7 +14,7 @@
 </head>
 <body>
 	<main>
-		<div class="container">
+		<div class="container" id="healthTracker">
 
 			<!-- header -->
 			<div class="row">
@@ -44,13 +44,15 @@
 
 	  		<div class="row">
 	  			<!-- list with search results -->
-	  		  	<div class="col s4">
+	  		  	<div class="col s6">
 	  		  		<h4>Search Results</h4>
-	  				<ul id="list" class="collapsible" data-collapsible="expandable"></ul>
+	  				<ul id="list" class="collapsible" data-collapsible="accordion"></ul>
 	  			</div>
 
-	  			<div class="col s4"></div>
-	  			<div class="col s4"></div>
+	  			<div class="col s6">
+	  				<h4>My Food</h4>
+	  				<ul id="myFood" class="collapsible" data-collapsible="accordion"></ul>
+	  			</div>
 	  		</div>
 
 		</div>
@@ -58,14 +60,26 @@
 
 	<!-- template for each item in search results -->
 	<script id="listitemTemplate" type="text/template">
+		<div class="collapsible-header">
+			<%= fields.item_name %>
+			<div class="secondary-content"><i class="material-icons addToMyFood">add</i></div>
+		</div>
+		<div class="collapsible-body">
+			<p>Calories: <%= fields.nf_calories %></p>
+			<p>Protein: <%= fields.nf_protein %></p>
+			<p>Sugars: <%= fields.nf_sugars %></p>
+		</div>
+	</script>
+
+	<script id="myfooditemTemplate" type="text/template">
 		<div class="collapsible-header"><%= fields.item_name %></div>
 		<div class="collapsible-body">
 			<p>Calories: <%= fields.nf_calories %></p>
 			<p>Protein: <%= fields.nf_protein %></p>
 			<p>Sugars: <%= fields.nf_sugars %></p>
-
 		</div>
 	</script>
+
 
 	<!-- JavaScript Includes -->
     <script src="js/lib/jquery-1.11.3.min.js"></script>

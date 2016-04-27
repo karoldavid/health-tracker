@@ -1,10 +1,11 @@
 var app = app || {};
 
 app.ListView = Backbone.View.extend({
-    el: $('#search'),
+    el: $('#healthTracker'),
     events: {
-        'keyup input': 'getResults',
-        'click i': 'resetSearch'
+        'keyup #search input': 'getResults',
+        'click #search i': 'resetSearch',
+        'click .addToMyFood': 'addToMyFood',
     },
     initialize: function() {
         _.bindAll(this, 'render', 'getResults');
@@ -28,8 +29,6 @@ app.ListView = Backbone.View.extend({
         var listItemView = new app.ListitemView({
             model: item
         });
-
-        console.log(item);
 
         $('#list').append( listItemView.render().el )
     },
@@ -55,6 +54,10 @@ app.ListView = Backbone.View.extend({
             that.collection.reset();
             that.renderList();
         }
+    },
+    addToMyFood: function(item) {
+        var view = new app.TodoView({ model: item });
+        this.$list.append(view.render().el);
     },
     resetSearch: function( e ) {
         e.preventDefault();
