@@ -7,11 +7,16 @@ app.ListitemView = Backbone.View.extend({
     template: _.template( $( '#listitemTemplate' ).html() ),
 
     render: function() {
-        this.$el.html( this.template( this.model.attributes ) );
+        this.$el.html( this.template(this.model));
         return this;
     },
     events: {
+        'click .addToMyFood': 'addToMyFood',
         'click .delete': 'deleteItem'
+    },
+    addToMyFood: function() {
+        var item = this.model;
+        app.myfoodlist.add(item);
     },
     deleteItem: function() {
         //Delete model
@@ -20,6 +25,5 @@ app.ListitemView = Backbone.View.extend({
         //Delete view
         this.remove();
 
-        console.log(app.ListView.collection);
     }
 });

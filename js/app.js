@@ -3,5 +3,6 @@ var app = app || {};
 $(function() {
 
 	new app.ListView();
+	new app.MyFoodListView();
 
 });
