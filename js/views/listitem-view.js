@@ -15,8 +15,11 @@ app.ListitemView = Backbone.View.extend({
         'click .delete': 'deleteItem'
     },
     addToMyFood: function() {
-        var item = this.model;
-        app.myfoodlist.add(item);
+        var item = this.model,
+            id = item._id;
+        if (!app.myfoodlist.get(id)) {
+            app.myfoodlist.add(item);
+        }
     },
     deleteItem: function() {
         //Delete model

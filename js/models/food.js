@@ -2,6 +2,8 @@ var app = app || {};
 
 app.Food = Backbone.Model.extend({
 
+    idAttribute:"_id",
+
     defaults: {
         id: '',
         name: '',
