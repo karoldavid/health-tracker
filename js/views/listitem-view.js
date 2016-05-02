@@ -1,6 +1,5 @@
 var app = app || {};
 
-
 app.ListitemView = Backbone.View.extend({
     tagName: 'li',
     //className: 'collection-item',
@@ -27,6 +26,5 @@ app.ListitemView = Backbone.View.extend({
 
         //Delete view
         this.remove();
-
     }
 });
