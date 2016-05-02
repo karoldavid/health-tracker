@@ -56,8 +56,7 @@ app.ListView = Backbone.View.extend({
         }
     },
     addToMyFood: function(item) {
-        var view = new app.TodoView({ model: item });
-        this.$list.append(view.render().el);
+
     },
     resetSearch: function( e ) {
         e.preventDefault();
