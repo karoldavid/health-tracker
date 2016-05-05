@@ -1,0 +1,30 @@
+{
+  "name": "health-tracker",
+  "version": "1.0.0",
+  "description": "Keeps track of daily calorie intake",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karoldavid/health-tracker.git"
+  },
+  "keywords": [
+    "health",
+    "track",
+    "calorie",
+    "intake",
+    "count",
+    "consumption",
+    "calculate"
+  ],
+  "author": "Karol David Zyskowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karoldavid/health-tracker/issues"
+  },
+  "http://karoldavid.github.io/health-tracker/"
+}
