@@ -1,3 +1,4 @@
+var jshint = require('gulp-jshint');
 var gulp = require('gulp');
 var stylus = require('gulp-stylus');
 var autoprefixer = require('gulp-autoprefixer');
@@ -8,6 +9,7 @@ var concatify = require('gulp-concat');
 
 var paths = {
 	stylesheets: ['src/css/*.css'],
+	scripts: ['src/js/app/models/*', 'src/js/app/collections/*', 'src/js/app/views/*', 'src/js/app/app.js']
 };
 
 
@@ -18,6 +20,15 @@ gulp.task('css', function() {
         .pipe(minifyCSS())
         .pipe(concatify('styles.min.css'))
         .pipe(gulp.dest('dist/css'))
+});
+
+gulp.task('js', function () {
+   return gulp.src(paths.scripts)
+      .pipe(jshint())
+      .pipe(jshint.reporter('default'))
+      .pipe(uglify())
+      .pipe(concatify('app.min.js'))
+      .pipe(gulp.dest('dist/js/app'));
 });
 
 gulp.task('default', function() {
