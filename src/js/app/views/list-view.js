@@ -26,7 +26,7 @@ app.ListView = Backbone.View.extend({
         var listItemView = new app.ListitemView({
             model: item
         });
-        this.results.append(listItemView.render().el)
+        this.results.append(listItemView.render().el);
     },
     getResults: function(e) {
         e.preventDefault();
@@ -36,7 +36,7 @@ app.ListView = Backbone.View.extend({
             newUrl = "https://api.nutritionix.com/v1_1/search/" + query +"?results=0:5&appId=45d2f648&appKey=554a56cde5749526f1c5bb56190fda39";
             this.collection.query = query;
             this.collection.url = newUrl;
-        if (query != '') {
+        if (query !=='') {
             this.collection.fetch({
                 data: $.param({ phrase: query, cal_min: 0, cal_max: 50000, limit: 10, results: {0:5}, fields: '*'}),
                 success: function() {
