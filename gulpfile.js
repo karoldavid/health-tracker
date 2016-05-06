@@ -44,6 +44,14 @@ gulp.task('index', function(){
         .pipe(gulp.dest('./dist'));
  });
 
-gulp.task('default', function() {
-    console.log("Yeah, I'm gulpin!");
+gulp.task('jshint', function() {
+  return gulp.src(paths.scripts)
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 });
+
+gulp.task('watch', function() {
+  gulp.watch(paths.scripts, ['jshint']);
+});
+
+gulp.task('default', ['watch']);
