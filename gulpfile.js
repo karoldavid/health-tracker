@@ -54,4 +54,4 @@ gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['jshint']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'css', 'js', 'index']);
