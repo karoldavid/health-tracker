@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concatify = require('gulp-concat');
 var inject = require('gulp-inject');
+var browserSync = require('browser-sync');
 
 var paths = {
 	stylesheets: ['src/css/*.css'],
@@ -50,10 +51,19 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter('default'));
 });
 
+gulp.task('browser-sync', function() {
+  browserSync({
+    server: {
+      baseDir: "./",
+      browser: "google chrome"
+    }
+  });
+});
+
 gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['jshint']);
 });
 
-gulp.task('start', ['watch']);
+gulp.task('start', ['watch', 'browser-sync']);
 
 gulp.task('default', ['watch', 'css', 'js', 'index']);
