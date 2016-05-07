@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concatify = require('gulp-concat');
 var inject = require('gulp-inject');
+var connect = require('gulp-connect');
 
 var paths = {
 	stylesheets: ['src/css/*.css'],
@@ -53,5 +54,14 @@ gulp.task('jshint', function() {
 gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['jshint']);
 });
+
+gulp.task('connect', function() {
+  connect.server({
+    root: './',
+    livereload: true
+  });
+});
+
+gulp.task('start', ['connect', 'watch']);
 
 gulp.task('default', ['watch', 'css', 'js', 'index']);
