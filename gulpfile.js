@@ -21,6 +21,7 @@ gulp.task('css', function() {
         .pipe(minifyCSS())
         .pipe(concatify('styles.min.css'))
         .pipe(gulp.dest('dist/css'))
+        .pipe(connect.reload());
 });
 
 gulp.task('js', function () {
@@ -29,7 +30,8 @@ gulp.task('js', function () {
 		.pipe(jshint.reporter('default'))
 		.pipe(uglify())
 		.pipe(concatify('app.min.js'))
-		.pipe(gulp.dest('dist/js/app'));
+		.pipe(gulp.dest('dist/js/app'))
+		.pipe(connect.reload());
 });
 
 gulp.task('index', function(){
@@ -42,7 +44,8 @@ gulp.task('index', function(){
         .pipe(inject(
             gulp.src('./dist/css/*.css',
             {read: false}), {relative: true}))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./dist'))
+        .pipe(connect.reload());
  });
 
 gulp.task('jshint', function() {
