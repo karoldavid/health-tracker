@@ -7,7 +7,6 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concatify = require('gulp-concat');
 var inject = require('gulp-inject');
-var connect = require('gulp-connect');
 
 var paths = {
 	stylesheets: ['src/css/*.css'],
@@ -21,7 +20,6 @@ gulp.task('css', function() {
         .pipe(minifyCSS())
         .pipe(concatify('styles.min.css'))
         .pipe(gulp.dest('dist/css'))
-        .pipe(connect.reload());
 });
 
 gulp.task('js', function () {
@@ -31,7 +29,6 @@ gulp.task('js', function () {
 		.pipe(uglify())
 		.pipe(concatify('app.min.js'))
 		.pipe(gulp.dest('dist/js/app'))
-		.pipe(connect.reload());
 });
 
 gulp.task('index', function(){
@@ -45,7 +42,6 @@ gulp.task('index', function(){
             gulp.src('./dist/css/*.css',
             {read: false}), {relative: true}))
         .pipe(gulp.dest('./dist'))
-        .pipe(connect.reload());
  });
 
 gulp.task('jshint', function() {
@@ -58,13 +54,6 @@ gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['jshint']);
 });
 
-gulp.task('connect', function() {
-  connect.server({
-    root: './',
-    livereload: true
-  });
-});
-
-gulp.task('start', ['connect', 'watch']);
+gulp.task('start', ['watch']);
 
 gulp.task('default', ['watch', 'css', 'js', 'index']);
