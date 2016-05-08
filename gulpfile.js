@@ -12,7 +12,8 @@ var browserSync = require('browser-sync');
 
 var bases = {
 	src: 'src/',
-	dist: 'dist/'
+	dist: 'dist/',
+	root: './'
 };
 
 var paths = {
@@ -44,15 +45,15 @@ gulp.task('js', function () {
 
 gulp.task('index', function(){
 	return gulp.src('./src/index.html')
-		.pipe(gulp.dest('./dist'))
+		.pipe(gulp.dest('./'))
         .pipe(inject(
             gulp.src('./dist/js/app/*.js',
                 {read: false}), {relative: true}))
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest('./'))
         .pipe(inject(
             gulp.src('./dist/css/*.css',
             {read: false}), {relative: true}))
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest('./'))
         .pipe(browserSync.reload({stream:true}));
  });
 
@@ -64,7 +65,7 @@ gulp.task('jshint', function() {
 
 gulp.task('copy', function() {
 	gulp.src(paths.extras, {cwd: bases.src})
-		.pipe(gulp.dest(bases.dist));
+		.pipe(gulp.dest(bases.root));
 });
 
 gulp.task('clean', function () {
