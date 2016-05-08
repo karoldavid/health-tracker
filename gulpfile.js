@@ -11,7 +11,8 @@ var browserSync = require('browser-sync');
 
 var paths = {
 	stylesheets: ['src/css/*.css'],
-	scripts: ['src/js/app/models/*', 'src/js/app/collections/*', 'src/js/app/views/*', 'src/js/app/app.js']
+	scripts: ['src/js/app/models/*', 'src/js/app/collections/*', 'src/js/app/views/*', 'src/js/app/app.js'],
+	index: ['src/index.html']
 };
 
 gulp.task('css', function() {
@@ -64,7 +65,9 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.scripts, ['jshint']);
+	gulp.watch(paths.stylesheets, ['css']);
+	gulp.watch(paths.scripts, ['jshint', 'js']);
+	gulp.watch(paths.index, ['index']);
 });
 
 gulp.task('start', ['watch', 'browser-sync']);
