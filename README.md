@@ -1,6 +1,6 @@
 # Health Tracker Application
 
-Link to the live version http://karoldavid.github.io/health-tracker/dist
+Link to the live version http://karoldavid.github.io/health-tracker/
 
 ## Description
 
