@@ -18,9 +18,16 @@ var bases = {
 
 var paths = {
 	stylesheets: ['src/css/*.css'],
-	scripts: ['src/js/app/models/*', 'src/js/app/collections/*', 'src/js/app/views/*', 'src/js/app/app.js'],
+	scripts: ['src/js/app/models/*',
+		'src/js/app/collections/*',
+		'src/js/app/views/*',
+		'src/js/app/app.js'],
 	index: ['src/index.html'],
-	extras: ['favicon.png']
+	extras: ['favicon.png'],
+	dependencies: [ 'bower_components/jquery/dist/jquery.min.js',
+		'bower_components/underscore/underscore-min.js',
+		'bower_components/backbone/backbone-min.js',
+		'bower_components/Materialize/dist/js/materialize.min.js']
 };
 
 gulp.task('css', function() {
@@ -47,7 +54,7 @@ gulp.task('index', function(){
 	return gulp.src('./src/index.html')
 		.pipe(gulp.dest('./'))
         .pipe(inject(
-            gulp.src('./dist/js/app/*.js',
+            gulp.src([paths.dependencies[0], paths.dependencies[1], paths.dependencies[2], paths.dependencies[3], './dist/js/app/*.js'],
                 {read: false}), {relative: true}))
         .pipe(gulp.dest('./'))
         .pipe(inject(
