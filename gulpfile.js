@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concatify = require('gulp-concat');
 var inject = require('gulp-inject');
+var del = require('del');
 var browserSync = require('browser-sync');
 
 var bases = {
@@ -66,6 +67,12 @@ gulp.task('copy', function() {
 		.pipe(gulp.dest(bases.dist));
 });
 
+gulp.task('clean', function () {
+  return del([
+    'dist/**/*'
+  ]);
+});
+
 gulp.task('browser-sync', function() {
   browserSync({
     server: {
@@ -83,4 +90,4 @@ gulp.task('watch', function() {
 
 gulp.task('start', ['watch', 'browser-sync']);
 
-gulp.task('default', ['watch', 'css', 'js', 'index']);
+gulp.task('default', ['clean', 'css', 'js', 'index', 'copy']);
