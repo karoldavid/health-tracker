@@ -9,10 +9,16 @@ var concatify = require('gulp-concat');
 var inject = require('gulp-inject');
 var browserSync = require('browser-sync');
 
+var bases = {
+	src: 'src/',
+	dist: 'dist/'
+};
+
 var paths = {
 	stylesheets: ['src/css/*.css'],
 	scripts: ['src/js/app/models/*', 'src/js/app/collections/*', 'src/js/app/views/*', 'src/js/app/app.js'],
-	index: ['src/index.html']
+	index: ['src/index.html'],
+	extras: ['favicon.png']
 };
 
 gulp.task('css', function() {
@@ -53,6 +59,11 @@ gulp.task('jshint', function() {
   return gulp.src(paths.scripts)
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
+});
+
+gulp.task('copy', function() {
+	gulp.src(paths.extras, {cwd: bases.src})
+		.pipe(gulp.dest(bases.dist));
 });
 
 gulp.task('browser-sync', function() {
