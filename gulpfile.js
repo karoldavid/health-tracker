@@ -84,7 +84,10 @@ gulp.task('clean', function () {
 gulp.task('browser-sync', function() {
   browserSync({
     server: {
-      baseDir: "./",
+      baseDir: "./src",
+      routes: {
+        '/bower_components': 'bower_components'
+      },
       browser: "google chrome"
     }
   });
