@@ -1,11 +1,13 @@
 var app = app || {};
 
 app.Food = Backbone.Model.extend({
-
+    url: function() {
+        return '/api/myfood/' + encodeURIComponent(this.id);
+    },
+    ocalStorage: true,
     idAttribute:"_id",
-
     defaults: {
-        id: '',
+        _id: '',
         name: '',
         fat: 0,
         carbs: 0,
@@ -17,7 +19,7 @@ app.Food = Backbone.Model.extend({
 
         if (typeof response.fields != 'undefined') {
         var food = {};
-            food.id          = response._id;
+            food._id          = response._id;
             food.name        = response.fields.item_name;
             food.calories    = response.fields.nf_calories;
             food.fat         = response.fields.nf_total_fat;

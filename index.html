@@ -72,7 +72,10 @@
 	</script>
 
 	<script id="myfooditemTemplate" type="text/template">
-		<div class="collapsible-header"><%= fields.item_name %></div>
+		<div class="collapsible-header">
+			<%= fields.item_name %>
+			<div class="secondary-content"><i class="material-icons delete">delete</i></div>
+		</div>
 		<div class="collapsible-body">
 			<p>Calories: <%= fields.nf_calories %></p>
 			<p>Protein: <%= fields.nf_protein %></p>

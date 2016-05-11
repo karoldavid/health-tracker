@@ -13,6 +13,7 @@ app.MyFoodListView = Backbone.View.extend({
 
     },
     addOne: function(food) {
+
         var view = new app.MyFoodView({ model: food });
         this.$el.append(view.render().el);
     }
