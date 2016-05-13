@@ -17,17 +17,34 @@
 	<main>
 		<div class="container" id="healthTracker">
 
-			<!-- header -->
+			<nav class="indigo darken-4">
+			  <div class="nav-wrapper">
+			    <h4 href="#" class="brand-logo">Health Tracker</h4>
+			    <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+			    <!-- These navigation links disappear if the screen gets too small. -->
+			    <ul class="right hide-on-med-and-down">
+			      <li><a href="search.html"><i class="material-icons">search</i></a></li>
+			      <li><a href="myfood.html">My Food</a></li>
+			      <li><a href="calories.html">Daily Calories</a></li>
+			    </ul>
+			    <!-- hamburger menu-->
+			    <ul class="side-nav" id="mobile-menu">
+			      <li><a href="search.html">Search</a></li>
+			      <li><a href="myfood.html">My Food</a></li>
+			      <li><a href="calories.html">Daily Calories</a></li>
+			    </ul>
+			  </div>
+			</nav>
+
 			<div class="row">
 				<div class="col s12">
-				<h1 class="header white-text">Health Tracker</h1>
-				<h5 class="header blue-text lighten-5">Live Search <a href="http://www.nutritionix.com/" title="go to Nutritionix Website"target="_blank">Nutritionix</a></h5>
+				<h5 class="blue-text lighten-5">Live Search <a href="http://www.nutritionix.com/" title="go to Nutritionix Website"target="_blank">Nutritionix</a></h5>
 				</div>
 			</div>
 
 			<!-- search bar -->
 			<div class="row">
-				<div class="col s10">
+				<div class="col s12 l10">
 	      			<form id="search">
 				        <div class="input-field">
 				        	<input id="query" type="search" required>
@@ -36,17 +53,17 @@
 						</div>
 			    	</form>
 		  		</div>
-		  		<div class="col s2 right-align"></div>
+		  		<div class="col l2 right-align"></div>
 	  		</div>
 
 	  		<div class="row">
 	  			<!-- list with search results -->
-	  		  	<div class="col s6">
+	  		  	<div class="s12 col l6">
 	  		  		<h4>Search Results</h4>
 	  				<ul id="searchResults" class="collapsible" data-collapsible="accordion"></ul>
 	  			</div>
 
-	  			<div class="col s6">
+	  			<div class="col s12 l6">
 	  				<h4>My Food</h4>
 	  				<ul id="myFood" class="collapsible" data-collapsible="accordion"></ul>
 	  			</div>
@@ -102,6 +119,13 @@
     <script src="js/app/routes/routes.js"></script>
     <script src="js/app/app.js"></script>
     <!-- endinject -->
+
+    <script>
+	 $(document).ready(function(){
+	   // Activate the side menu
+	   $(".button-collapse").sideNav();
+	  });
+	</script>
 
 </body>
 </html>
